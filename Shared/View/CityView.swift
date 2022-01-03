@@ -11,9 +11,10 @@ import SwiftUI
 struct CityView: View {
     var topItemHeight: CGFloat = 70
     var dayWeatherHeight: CGFloat = 140
-    @State var index = 0
+    
     @StateObject var dataModel = HomeViewModel()
-    @State var city: City
+    var city: City?
+    var fecthedData: CityModel?
     var body: some View {
         GeometryReader { proxy in
 
@@ -113,13 +114,20 @@ struct CityView: View {
             //            requesetLocation()
         }
         .task {
-            dataModel.refreshData(city: city)
+            if let id = fecthedData?.id {
+                dataModel.refreshData(cityId: id)
+            } else {
+                if let city = city {
+                    dataModel.refreshData(cityId: city.id)
+                }
+            }
+            
         }
         .onReceive(NotificationCenter.default.publisher(for: Notification.Name("indexChanged"), object: nil)) { _ in
 
             NotificationCenter.default.post(name: NSNotification.Name("CurrentCityWeather"), object: nil, userInfo: [
                 "currentWeather": dataModel.currentWeather,
-                "city": city,
+//                "city": city!.id,
             ])
         }
     }

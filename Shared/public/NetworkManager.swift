@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-import KakaJSON
+import HandyJSON
 import Moya
-typealias Success = (Data) -> Void
+typealias Success = (String) -> Void
 
 class NetworkManager {
     static let shared = NetworkManager()
@@ -20,8 +20,10 @@ class NetworkManager {
             case let .success(resp):
 
 //                YLPLog(String(data: resp.data, encoding: .utf8) ?? "")
-                    
-                success?(resp.data)
+                if let jsonString = String(data: resp.data, encoding: .utf8) {
+                    success?(jsonString)
+                }
+                
             case let .failure(error):
                 YLPLog(error)
             }

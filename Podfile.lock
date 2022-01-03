@@ -5,7 +5,7 @@ PODS:
     - AMapFoundation (~> 1.6.9)
   - AMapSearch (8.1.0):
     - AMapFoundation (~> 1.6.9)
-  - KakaJSON (1.1.2)
+  - HandyJSON (5.0.2)
   - Moya (15.0.0):
     - Moya/Core (= 15.0.0)
   - Moya/Core (15.0.0):
@@ -40,7 +40,7 @@ DEPENDENCIES:
   - Alamofire
   - AMapLocation
   - AMapSearch
-  - KakaJSON
+  - HandyJSON
   - Moya
   - SwifterSwift
 
@@ -50,7 +50,7 @@ SPEC REPOS:
     - AMapFoundation
     - AMapLocation
     - AMapSearch
-    - KakaJSON
+    - HandyJSON
     - Moya
     - SwifterSwift
 
@@ -59,10 +59,10 @@ SPEC CHECKSUMS:
   AMapFoundation: 8d8ecbb0b2e9ce5487995360d26c885d94642bfd
   AMapLocation: 5ef44a1117be7dc541cb7a7d43d03c5ee91e4387
   AMapSearch: 5c1cc07429f04b9cc76438fcb2411c66fdbbb178
-  KakaJSON: cc5ff50a8c1cfbb09413db8496cb709a209e6137
+  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   SwifterSwift: 334181863c416882d97b7a60c05054d9e4d799e2
 
-PODFILE CHECKSUM: 95ee75532219fb5629b90b317a98ad33a8eecf90
+PODFILE CHECKSUM: fc95580ccd8b2be90d46d857ca56963121a1fa2d
 
 COCOAPODS: 1.11.2

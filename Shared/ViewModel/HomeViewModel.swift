@@ -5,8 +5,9 @@
 //  Created by 杨立鹏 on 2021/12/30.
 //
 
-import KakaJSON
+import HandyJSON
 import SwiftUI
+import CoreData
 class HomeViewModel: ObservableObject, Equatable {
     static func == (lhs: HomeViewModel, rhs: HomeViewModel) -> Bool {
         lhs.currentWeather == rhs.currentWeather && lhs.currentAir == rhs.currentAir
@@ -14,33 +15,35 @@ class HomeViewModel: ObservableObject, Equatable {
 
     @Published var currentWeather = CurrentWeather()
     @Published var currentAir = CurrentAir()
+    @Published var currentCity = City()
+
     let locationManager = AMapLocationManager()
 
-    func refreshData(city: City) {
-        requestCurrentWeather(city: city)
-        requestCurrentAir(city: city)
+    func refreshData(cityId: String) {
+        requestCurrentWeather(cityId: cityId)
+        requestCurrentAir(cityId: cityId)
     }
 
-    func requestCurrentWeather(city: City) {
-        NetworkManager.shared.request(target: .current(location: city.id)) { data in
+    func requestCurrentWeather(cityId: String) {
+        NetworkManager.shared.request(target: .current(location: cityId)) { jsonString in
 
-            if let model = model(from: data, CurrentWeatherResult.self) {
+            if let model = CurrentWeatherResult.deserialize(from: jsonString) {
                 self.currentWeather = model.now
             }
         }
     }
 
-    func requestCurrentAir(city: City) {
-        NetworkManager.shared.request(target: .currentAir(location: city.id)) { data in
+    func requestCurrentAir(cityId: String) {
+        NetworkManager.shared.request(target: .currentAir(location: cityId)) { jsonString in
 
-            if let model = model(from: data, CurrentAirResult.self) {
+            if let model = CurrentAirResult.deserialize(from: jsonString) {
                 self.currentAir = model.now
             }
         }
     }
 
     func requesetLocation() {
-        locationManager.requestLocation(withReGeocode: false, completionBlock: { (location: CLLocation?, reGeocode: AMapLocationReGeocode?, error: Error?) in
+        locationManager.requestLocation(withReGeocode: false, completionBlock: { (location: CLLocation?, _: AMapLocationReGeocode?, error: Error?) in
 
             if let error = error {
                 let error = error as NSError
@@ -63,17 +66,42 @@ class HomeViewModel: ObservableObject, Equatable {
             }
 
             if let location = location {
-                NSLog("location:%@", location)
+                let lat = (location.coordinate.latitude * 100).rounded() / 100
+                let lon = (location.coordinate.longitude * 100).rounded() / 100
 
-                CLGeocoder().reverseGeocodeLocation(location) { places, _ in
-
-                    guard let places = places else { return }
+                NetworkManager.shared.request(target: .searchCity(keyword: "\(lon),\(lat)")) { jsonString in
+                    if let model = LocationResult.deserialize(from: jsonString) {
+                        if let currentCity = model.location.first {
+//                            self.currentCity = currentCity
+                            print(currentCity)
+                        }
+                    }
                 }
             }
 
-            if let reGeocode = reGeocode {
-                NSLog("reGeocode:%@", reGeocode)
-            }
         })
+    }
+    
+    func cityModel(context: NSManagedObjectContext, city: City = .defaultCity) -> CityModel {
+        
+        let cityModel = CityModel(context: context)
+        
+        cityModel.adm1 = city.adm1
+        cityModel.adm2 = city.adm2
+        cityModel.country = city.country
+        cityModel.fxLink = city.fxLink
+        cityModel.id = city.id
+        cityModel.isDst = city.isDst
+        cityModel.lat = city.lat
+        cityModel.lon = city.lon
+        cityModel.name = city.name
+        cityModel.rank = city.rank
+        cityModel.type = city.type
+        cityModel.tz = city.tz
+        cityModel.utcOffset = city.utcOffset
+        cityModel.isLocation = city.isLocation
+        cityModel.addTime = city.addTime
+        
+        return cityModel
     }
 }

@@ -281,6 +281,8 @@
 			dependencies = (
 			);
 			name = "LuohenWeather (iOS)";
+			packageProductDependencies = (
+			);
 			productName = "LuohenWeather (iOS)";
 			productReference = A1C666C4277D3C52005B645E /* LuohenWeather.app */;
 			productType = "com.apple.product-type.application";
@@ -376,6 +378,8 @@
 				Base,
 			);
 			mainGroup = A1C666B4277D3C50005B645E;
+			packageReferences = (
+			);
 			productRefGroup = A1C666C5277D3C52005B645E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

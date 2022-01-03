@@ -77,6 +77,18 @@ struct CitySelectView: View {
     @State var searchText: String = ""
     var rows: [GridItem] = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
     @StateObject var dataModel = CitySelectViewModel()
+    
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    @FocusState private var focusedField: Field?
+    
+    enum Field: Hashable {
+        case search
+        
+      }
+    
     var body: some View {
         NavigationView {
             VStack(alignment: .leading, spacing: 10) {
@@ -85,6 +97,7 @@ struct CitySelectView: View {
                         YLPLog(newValue)
                         dataModel.requestCities(keyword: newValue)
                     }
+                    .focused($focusedField, equals: .search)
 
                 Text("当前位置")
                     .foregroundColor(Color.subTextColor)
@@ -108,8 +121,12 @@ struct CitySelectView: View {
                     LazyVGrid(columns: rows, spacing: 10) {
                         ForEach(hotCity, id: \.self) { city in
                             VStack {
-                                Text(city.name)
-                                    .font(.system(size: 15))
+                                Button {
+                                    presentationMode.wrappedValue.dismiss()
+                                } label: {
+                                    Text(city.name)
+                                        .font(.system(size: 15))
+                                }
                             }
                             .frame(maxWidth: .infinity)
                             .frame(height: 36)
@@ -124,6 +141,12 @@ struct CitySelectView: View {
                 VStack {
                     List(dataModel.cities) { city in
                         Button {
+                            withAnimation {
+                                focusedField = nil
+                                _ = HomeViewModel().cityModel(context: viewContext, city: city)
+                                try? viewContext.save()
+                                presentationMode.wrappedValue.dismiss()
+                            }
                             
                         } label: {
                             Text("\(city.name),\(city.adm2),\(city.adm1),\(city.country)")

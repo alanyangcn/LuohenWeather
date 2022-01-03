@@ -7,8 +7,9 @@
 
 import SwiftUI
 
+
 @main
-struct LuohenWeatherApp: App {
+struct LuohenWeatherApp: SwiftUI.App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
@@ -21,6 +22,7 @@ struct LuohenWeatherApp: App {
         return WindowGroup {
             HomeView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                
         }
     }
 }

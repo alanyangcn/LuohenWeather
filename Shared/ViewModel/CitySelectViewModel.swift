@@ -5,16 +5,15 @@
 //  Created by 杨立鹏 on 2021/12/31.
 //
 
-import KakaJSON
+import HandyJSON
 import SwiftUI
 class CitySelectViewModel: ObservableObject {
-    @Published var cities = [Location]()
+    @Published var cities = [City]()
 
     func requestCities(keyword: String) {
-        NetworkManager.shared.request(target: .searchCity(keyword: keyword)) { data in
+        NetworkManager.shared.request(target: .searchCity(keyword: keyword)) { jsonString in
 
-            if let model = model(from: data, LocationResult.self) {
-                
+            if let model = LocationResult.deserialize(from: jsonString) {
                 self.cities = model.location
             }
         }

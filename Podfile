@@ -10,8 +10,9 @@ target 'LuohenWeather (iOS)' do
   pod 'AMapLocation'
   pod 'Moya'
   pod 'Alamofire'
-  pod 'KakaJSON'
+  pod 'HandyJSON'
   pod 'SwifterSwift'
+  
 end
 
 target 'LuohenWeather (macOS)' do
