@@ -16,12 +16,14 @@ class HomeViewModel: ObservableObject, Equatable {
     @Published var currentWeather = CurrentWeather()
     @Published var currentAir = CurrentAir()
     @Published var currentCity = City()
+    @Published var dailyWeather = [DailyWeather]()
 
     let locationManager = AMapLocationManager()
 
     func refreshData(cityId: String) {
         requestCurrentWeather(cityId: cityId)
         requestCurrentAir(cityId: cityId)
+        requestDailyWeather(cityId: cityId, dayCount: 15)
     }
 
     func requestCurrentWeather(cityId: String) {
@@ -42,6 +44,15 @@ class HomeViewModel: ObservableObject, Equatable {
         }
     }
 
+    func requestDailyWeather(cityId: String, dayCount: Int) {
+        NetworkManager.shared.request(target: .dailyWeather(dayCount: dayCount, location: cityId)) { jsonString in
+
+            if let model = DailyWeatherResult.deserialize(from: jsonString) {
+                self.dailyWeather = model.daily
+            }
+        }
+    }
+    
     func requesetLocation() {
         locationManager.requestLocation(withReGeocode: false, completionBlock: { (location: CLLocation?, _: AMapLocationReGeocode?, error: Error?) in
 
@@ -81,10 +92,18 @@ class HomeViewModel: ObservableObject, Equatable {
 
         })
     }
-    
+    @discardableResult
     func cityModel(context: NSManagedObjectContext, city: City = .defaultCity) -> CityModel {
         
         let cityModel = CityModel(context: context)
+        
+        update(cityModel, by: city)
+        
+        
+        return cityModel
+    }
+    
+    func update(_ cityModel: CityModel, by city: City) {
         
         cityModel.adm1 = city.adm1
         cityModel.adm2 = city.adm2
@@ -102,6 +121,6 @@ class HomeViewModel: ObservableObject, Equatable {
         cityModel.isLocation = city.isLocation
         cityModel.addTime = city.addTime
         
-        return cityModel
+        
     }
 }

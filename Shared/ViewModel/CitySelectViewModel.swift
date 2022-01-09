@@ -15,6 +15,7 @@ class CitySelectViewModel: ObservableObject {
 
             if let model = LocationResult.deserialize(from: jsonString) {
                 self.cities = model.location
+                
             }
         }
     }

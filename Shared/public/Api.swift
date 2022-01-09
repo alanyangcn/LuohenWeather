@@ -14,12 +14,13 @@ enum Api {
     case current(location: String)
     case currentAir(location: String)
     case searchCity(keyword: String)
+    case dailyWeather(dayCount: Int, location: String)
 }
-
+//https://devapi.qweather.com/v7/weather/15d?location=101010100&key=38653fc6ddab4b14b8450a45337c5410
 extension Api: TargetType {
     var baseURL: URL {
         switch self {
-        case .current, .currentAir:
+        case .current, .currentAir, .dailyWeather:
             return URL(string: "https://devapi.qweather.com")!
             
         case .searchCity:
@@ -36,6 +37,8 @@ extension Api: TargetType {
             return "/v7/air/now"
         case .searchCity:
             return "/v2/city/lookup"
+        case let .dailyWeather(dayCount, _):
+            return "/v7/weather/\(dayCount)d"
         }
     }
 
@@ -45,7 +48,7 @@ extension Api: TargetType {
 
     var task: Task {
         switch self {
-        case let .current(location), let .currentAir(location):
+        case let .current(location), let .currentAir(location), let .dailyWeather(_, location):
             return .requestParameters(parameters: [
                 "key": weatherKey,
                 "location": location,
@@ -56,7 +59,7 @@ extension Api: TargetType {
                 "location": location,
             ], encoding: URLEncoding.default)
         }
-        return .requestPlain
+        
     }
 
     var headers: [String: String]? {

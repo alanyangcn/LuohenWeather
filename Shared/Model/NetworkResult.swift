@@ -24,6 +24,14 @@ struct CurrentAirResult: HandyJSON {
     var now = CurrentAir()
 }
 
+struct DailyWeatherResult: HandyJSON {
+    var code = ""
+    var fxLink = ""
+    var refer = Refer()
+    var updateTime = ""
+    var daily: [DailyWeather] = []
+}
+
 struct Refer: HandyJSON {
     var license = [String]()
     var sources = [String]()
@@ -58,4 +66,36 @@ struct CurrentAir: HandyJSON, Equatable {
     var primary = ""
     var pubTime = ""
     var so2 = ""
+}
+
+struct DailyWeather: HandyJSON, Identifiable, Equatable {
+    var cloud = ""
+    var fxDate = ""
+    var humidity = ""
+    var iconDay = ""
+    var iconNight = ""
+    var moonPhase = ""
+    var moonPhaseIcon = ""
+    var moonrise = ""
+    var moonset = ""
+    var precip = ""
+    var pressure = ""
+    var sunrise = ""
+    var sunset = ""
+    var tempMax = ""
+    var tempMin = ""
+    var textDay = ""
+    var textNight = ""
+    var uvIndex = ""
+    var vis = ""
+    var wind360Day = ""
+    var wind360Night = ""
+    var windDirDay = ""
+    var windDirNight = ""
+    var windScaleDay = ""
+    var windScaleNight = ""
+    var windSpeedDay = ""
+    var windSpeedNight = ""
+    
+    var id = UUID().uuidString
 }

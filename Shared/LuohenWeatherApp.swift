@@ -13,14 +13,15 @@ struct LuohenWeatherApp: SwiftUI.App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
-//        AMapLocationManager.updatePrivacyAgree(.didAgree)
         
         AMapServices.shared().apiKey = "47727c1ee5c3e28459eab6abdf891d56"
-//        AMapServices.shared().enableHTTPS = true
+        AMapServices.shared().enableHTTPS = true
         AMapLocationManager.updatePrivacyShow(.didShow, privacyInfo: .didContain)
         AMapLocationManager.updatePrivacyAgree(.didAgree)
+        
         return WindowGroup {
             HomeView()
+                
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 
         }
