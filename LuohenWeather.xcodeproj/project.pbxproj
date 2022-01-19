@@ -8,9 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		8F6D1CB2D80B6EC39105320F /* Pods_LuohenWeather__iOS_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 98491401801926E5C9C2497A /* Pods_LuohenWeather__iOS_.framework */; };
+		A102538327918C3600984FF7 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102538227918C3600984FF7 /* AboutView.swift */; };
 		A10C419327859629005F4090 /* CityManageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10C419227859629005F4090 /* CityManageView.swift */; };
 		A10DE23F277D64F2003C1BE6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10DE23E277D64F2003C1BE6 /* NetworkManager.swift */; };
-		A10DE241277D64FE003C1BE6 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10DE240277D64FE003C1BE6 /* Api.swift */; };
+		A10DE241277D64FE003C1BE6 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10DE240277D64FE003C1BE6 /* API.swift */; };
 		A10DE245277D8281003C1BE6 /* NetworkResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10DE244277D8281003C1BE6 /* NetworkResult.swift */; };
 		A10DE247277D882B003C1BE6 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10DE246277D882B003C1BE6 /* HomeViewModel.swift */; };
 		A10DE249277D8CF2003C1BE6 /* YLPLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = A10DE248277D8CF2003C1BE6 /* YLPLog.swift */; };
@@ -34,13 +35,12 @@
 		A1C666E6277D3C52005B645E /* LuohenWeather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A1C666BA277D3C50005B645E /* LuohenWeather.xcdatamodeld */; };
 		A1C666E7277D3C52005B645E /* LuohenWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C666BC277D3C50005B645E /* LuohenWeatherApp.swift */; };
 		A1C666E8277D3C52005B645E /* LuohenWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C666BC277D3C50005B645E /* LuohenWeatherApp.swift */; };
-		A1C666E9277D3C52005B645E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C666BD277D3C50005B645E /* ContentView.swift */; };
-		A1C666EA277D3C52005B645E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C666BD277D3C50005B645E /* ContentView.swift */; };
 		A1C666EB277D3C52005B645E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C666BE277D3C50005B645E /* Persistence.swift */; };
 		A1C666EC277D3C52005B645E /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C666BE277D3C50005B645E /* Persistence.swift */; };
 		A1C666ED277D3C52005B645E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1C666BF277D3C52005B645E /* Assets.xcassets */; };
 		A1C666EE277D3C52005B645E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1C666BF277D3C52005B645E /* Assets.xcassets */; };
 		A1C666FF277D3EBB005B645E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C666FE277D3EBB005B645E /* HomeView.swift */; };
+		A1C943EB279501B80095D806 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A102538227918C3600984FF7 /* AboutView.swift */; };
 		A1FB7533277DA3FA00FCA985 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FB7532277DA3FA00FCA985 /* City.swift */; };
 		A1FB7535277DAA9D00FCA985 /* CityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FB7534277DAA9D00FCA985 /* CityView.swift */; };
 		A1FB7537277DAB5E00FCA985 /* CitySelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1FB7536277DAB5E00FCA985 /* CitySelectView.swift */; };
@@ -69,9 +69,10 @@
 		5A0FE161B2ECF7C18DB0D61C /* Pods_LuohenWeather__macOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuohenWeather__macOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		90B27F707FE2EC3B49F5C281 /* Pods-LuohenWeather (macOS).release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LuohenWeather (macOS).release.xcconfig"; path = "Target Support Files/Pods-LuohenWeather (macOS)/Pods-LuohenWeather (macOS).release.xcconfig"; sourceTree = "<group>"; };
 		98491401801926E5C9C2497A /* Pods_LuohenWeather__iOS_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LuohenWeather__iOS_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A102538227918C3600984FF7 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		A10C419227859629005F4090 /* CityManageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityManageView.swift; sourceTree = "<group>"; };
 		A10DE23E277D64F2003C1BE6 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		A10DE240277D64FE003C1BE6 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		A10DE240277D64FE003C1BE6 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		A10DE244277D8281003C1BE6 /* NetworkResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResult.swift; sourceTree = "<group>"; };
 		A10DE246277D882B003C1BE6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		A10DE248277D8CF2003C1BE6 /* YLPLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YLPLog.swift; sourceTree = "<group>"; };
@@ -90,7 +91,6 @@
 		A1B0964B277E9E06004C6908 /* CitySelectViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySelectViewModel.swift; sourceTree = "<group>"; };
 		A1C666BB277D3C50005B645E /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		A1C666BC277D3C50005B645E /* LuohenWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuohenWeatherApp.swift; sourceTree = "<group>"; };
-		A1C666BD277D3C50005B645E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A1C666BE277D3C50005B645E /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		A1C666BF277D3C52005B645E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1C666C4277D3C52005B645E /* LuohenWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LuohenWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +166,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A102538127918C2B00984FF7 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				A102538227918C3600984FF7 /* AboutView.swift */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
 		A10DE23A277D5BD3003C1BE6 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,7 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				A10DE23E277D64F2003C1BE6 /* NetworkManager.swift */,
-				A10DE240277D64FE003C1BE6 /* Api.swift */,
+				A10DE240277D64FE003C1BE6 /* API.swift */,
 				A10DE248277D8CF2003C1BE6 /* YLPLog.swift */,
 				A1B09647277E973C004C6908 /* ColorExtension.swift */,
 				A11ECA562782FA750076023D /* LocationManager.swift */,
@@ -237,6 +245,7 @@
 		A19A19DA278451D000B18CB7 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				A19A19D02784204E00B18CB7 /* SearchBar.swift */,
 				A1FB7536277DAB5E00FCA985 /* CitySelectView.swift */,
 				A19A19CE2783EE6B00B18CB7 /* LoadingView.swift */,
 			);
@@ -265,7 +274,6 @@
 				A10DE242277D8239003C1BE6 /* Model */,
 				A10DE23D277D64D8003C1BE6 /* public */,
 				A1C666FD277D3EB0005B645E /* View */,
-				A1C666BD277D3C50005B645E /* ContentView.swift */,
 				A1C666BE277D3C50005B645E /* Persistence.swift */,
 				A1C666BC277D3C50005B645E /* LuohenWeatherApp.swift */,
 				A1C666BF277D3C52005B645E /* Assets.xcassets */,
@@ -316,11 +324,11 @@
 		A1C666FD277D3EB0005B645E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A102538127918C2B00984FF7 /* About */,
 				A193D81B2785942B00309A09 /* SettingView */,
 				A19A19DA278451D000B18CB7 /* Search */,
 				A19A19D9278451CA00B18CB7 /* Other */,
 				A19A19D627844A9900B18CB7 /* Home */,
-				A19A19D02784204E00B18CB7 /* SearchBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -576,8 +584,8 @@
 				A10C419327859629005F4090 /* CityManageView.swift in Sources */,
 				A11ECA552782F9440076023D /* HomeNavBar.swift in Sources */,
 				A1FB7533277DA3FA00FCA985 /* City.swift in Sources */,
-				A10DE241277D64FE003C1BE6 /* Api.swift in Sources */,
-				A1C666E9277D3C52005B645E /* ContentView.swift in Sources */,
+				A102538327918C3600984FF7 /* AboutView.swift in Sources */,
+				A10DE241277D64FE003C1BE6 /* API.swift in Sources */,
 				A19A19D12784204E00B18CB7 /* SearchBar.swift in Sources */,
 				A193D81D2785943500309A09 /* SettingView.swift in Sources */,
 				A19A19CF2783EE6B00B18CB7 /* LoadingView.swift in Sources */,
@@ -589,10 +597,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1C943EB279501B80095D806 /* AboutView.swift in Sources */,
 				A1C666E6277D3C52005B645E /* LuohenWeather.xcdatamodeld in Sources */,
 				A1C666EC277D3C52005B645E /* Persistence.swift in Sources */,
 				A1C666E8277D3C52005B645E /* LuohenWeatherApp.swift in Sources */,
-				A1C666EA277D3C52005B645E /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,7 +777,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = "1.0.0 beta";
 				PRODUCT_BUNDLE_IDENTIFIER = top.luohen.LuohenWeather;
 				PRODUCT_NAME = LuohenWeather;
 				SDKROOT = iphoneos;
@@ -809,7 +817,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = "1.0.0 beta";
 				PRODUCT_BUNDLE_IDENTIFIER = top.luohen.LuohenWeather;
 				PRODUCT_NAME = LuohenWeather;
 				SDKROOT = iphoneos;

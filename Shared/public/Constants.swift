@@ -10,6 +10,8 @@ import SwiftUI
 struct Constants {
     
 }
+
+// Notification Names
 extension Constants {
     static let citySelected: Notification.Name = .init(rawValue: "CitySelected")
 }

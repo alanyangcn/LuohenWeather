@@ -22,6 +22,16 @@ struct SettingView: View {
                         }
                     }
                 }
+                
+                Section {
+                    NavigationLink {
+                        AboutView()
+                    }label: {
+                        HStack {
+                            Text("关于")
+                        }
+                    }
+                }
             }
         }
 //        .navigationBarHidden(true)

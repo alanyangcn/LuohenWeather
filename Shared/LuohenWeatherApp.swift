@@ -7,23 +7,38 @@
 
 import SwiftUI
 
-
 @main
 struct LuohenWeatherApp: SwiftUI.App {
     let persistenceController = PersistenceController.shared
 
-    var body: some Scene {
-        
+    init() {
+        setupAMap()
+    }
+
+    private func setupAMap() {
         AMapServices.shared().apiKey = "47727c1ee5c3e28459eab6abdf891d56"
         AMapServices.shared().enableHTTPS = true
         AMapLocationManager.updatePrivacyShow(.didShow, privacyInfo: .didContain)
         AMapLocationManager.updatePrivacyAgree(.didAgree)
-        
+    }
+
+    var body: some Scene {
         return WindowGroup {
             HomeView()
-                
+
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                
         }
+    }
+}
+
+extension LuohenWeatherApp {
+    static var currentVersion: String {
+        if let info = Bundle.main.infoDictionary {
+            if let currentVersion = info["CFBundleShortVersionString"] as? String {
+                return currentVersion
+            }
+        }
+
+        return ""
     }
 }

@@ -10,14 +10,14 @@ import SwiftUI
 
 let weatherKey = "38653fc6ddab4b14b8450a45337c5410"
 
-enum Api {
+enum API {
     case current(location: String)
     case currentAir(location: String)
     case searchCity(keyword: String)
     case dailyWeather(dayCount: Int, location: String)
 }
-//https://devapi.qweather.com/v7/weather/15d?location=101010100&key=38653fc6ddab4b14b8450a45337c5410
-extension Api: TargetType {
+
+extension API: TargetType {
     var baseURL: URL {
         switch self {
         case .current, .currentAir, .dailyWeather:

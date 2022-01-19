@@ -18,8 +18,8 @@ typealias Failure = (Error) -> Void
 class NetworkManager {
     static let shared = NetworkManager()
     
-    private let provider = MoyaProvider<Api>()
-    func request(target: Api, success: Success?, failure: Failure? = nil) {
+    private let provider = MoyaProvider<API>()
+    func request(target: API, success: Success?, failure: Failure? = nil) {
         provider.request(target) {result in 
             switch result {
             case let .success(resp):
