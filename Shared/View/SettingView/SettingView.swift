@@ -34,9 +34,7 @@ struct SettingView: View {
                 }
             }
         }
-//        .navigationBarHidden(true)
-        .navigationTitle("设置")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationSetting(title: "设置")
         
         
     }
@@ -47,5 +45,34 @@ struct SettingView_Previews: PreviewProvider {
         NavigationView {
         SettingView()
         }
+    }
+}
+
+
+struct NavigationSetting: ViewModifier {
+    @Environment(\.presentationMode) private var presentationMode
+    @State var title: String
+    
+    func body(content: Content) -> some View {
+        content
+            .navigationTitle(title)
+            .navigationBarTitleDisplayMode(.inline)
+            .navigationBarBackButtonHidden(true)
+            .toolbar(content: {
+                ToolbarItemGroup(placement: .navigationBarLeading) {
+                    Button(action: {
+                        print("back action...")
+                        self.presentationMode.wrappedValue.dismiss()
+                    }, label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundColor(.black)
+                    })
+                }
+            })
+    }
+}
+extension View {
+    func navigationSetting(title: String) -> some View {
+        return  self.modifier(NavigationSetting(title: title))
     }
 }

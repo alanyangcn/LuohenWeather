@@ -25,7 +25,7 @@ struct HomeView: View {
     @StateObject var dataModel = HomeViewModel()
 
     @Environment(\.managedObjectContext) private var viewContext
-
+    @Environment(\.presentationMode) var presentationMode
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \CityModel.sort, ascending: true)],
         animation: .default)
@@ -46,6 +46,7 @@ struct HomeView: View {
                 .tabViewStyle(.page(indexDisplayMode: .never))
                 .indexViewStyle(.page(backgroundDisplayMode: .never))
             }
+            
 
             .background(
                 Image(bgName)
@@ -114,6 +115,7 @@ struct HomeView: View {
             }
             .navigationBarHidden(true)
         }
+
         .loading(tag: "Home")
     }
 }
@@ -124,7 +126,7 @@ func getHomeViewPreviews() -> some View {
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "CityModel")
 
     if let result = try? viewContext.fetch(request) {
-        result.forEach({viewContext.delete($0 as! NSManagedObject)})
+        result.forEach({ viewContext.delete($0 as! NSManagedObject) })
     }
 
     HomeViewModel().cityModel(context: viewContext)

@@ -13,6 +13,11 @@ struct LuohenWeatherApp: SwiftUI.App {
 
     init() {
         setupAMap()
+        let nba = UINavigationBarAppearance()
+        nba.backgroundColor = .white
+        nba.shadowColor = nil
+        UINavigationBar.appearance().standardAppearance = nba
+        UINavigationBar.appearance().scrollEdgeAppearance = nba
     }
 
     private func setupAMap() {
@@ -40,5 +45,17 @@ extension LuohenWeatherApp {
         }
 
         return ""
+    }
+}
+
+// 扩展实现侧滑返回
+extension UINavigationController: UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
     }
 }
